@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.pinterest.tests.LogoutTest
+Test set: com.pinterest.tests.SearchTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 15.081 s - in com.pinterest.tests.LogoutTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 54.143 s - in com.pinterest.tests.SearchTest

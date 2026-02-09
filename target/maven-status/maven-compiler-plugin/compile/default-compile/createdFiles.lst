@@ -1,11 +1,11 @@
 com\pinterest\pages\SignupPage.class
-com\pinterest\utils\JsonReader.class
 com\pinterest\pages\EditProfilePage.class
+com\pinterest\utils\ConfigReader.class
+com\pinterest\utils\DriverFactory.class
+com\pinterest\utils\JsonReader.class
 com\pinterest\pages\LoginPage.class
 com\pinterest\utils\CSVReader.class
 com\pinterest\pages\SearchPage.class
 com\pinterest\pages\PinPage.class
 com\pinterest\pages\LogoutPage.class
 com\pinterest\pages\HomePage.class
-com\pinterest\utils\ConfigReader.class
-com\pinterest\utils\DriverFactory.class
