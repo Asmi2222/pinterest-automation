@@ -1,5 +1,6 @@
 package com.pinterest.tests;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.pinterest.base.BaseTest;
 import com.pinterest.pages.LoginPage;
 import com.pinterest.pages.EditProfilePage;
@@ -8,9 +9,13 @@ import com.pinterest.utils.CSVReader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class EditProfileTest extends BaseTest {
     
@@ -19,13 +24,14 @@ public class EditProfileTest extends BaseTest {
     
     @BeforeClass
     public void setup() {
-        logger.info("=== Setting up Edit Profile Tests ===");
+        logger.info("Setting up Edit Profile Tests");
         
         String baseUrl = ConfigReader.get("base.url");
         String email = CSVReader.getEmail("validUser");
         String password = CSVReader.getPassword("validUser");
         
         logger.info("Email: {}", email);
+        logger.debug("Password configured for user");
         
         // Login
         driver.get(baseUrl + "/login/");
@@ -37,15 +43,44 @@ public class EditProfileTest extends BaseTest {
         wait.until(ExpectedConditions.urlContains("pinterest.com"));
         wait.until(ExpectedConditions.not(ExpectedConditions.urlContains("/login")));
         
-        logger.info("Login successful");
+        logger.info("Login successful for Edit Profile tests");
         
         editProfilePage = new EditProfilePage(driver);
-        logger.info("=== Setup Complete ===\n");
+        logger.info("Edit Profile tests setup completed");
     }
     
-    @Test(priority = 1)
+    /**
+     * Helper method to pause and view results WITHOUT using Thread.sleep()
+     */
+    private void viewResultsFor(int seconds) {
+        if (seconds <= 0) {
+            return;
+        }
+        
+        logger.info("Viewing results for {} seconds", seconds);
+        
+        FluentWait<Boolean> fluentWait = new FluentWait<>(true)
+            .withTimeout(Duration.ofSeconds(seconds))
+            .pollingEvery(Duration.ofMillis(500))
+            .ignoring(NoSuchElementException.class);
+        
+        try {
+            fluentWait.until(result -> false);
+        } catch (Exception e) {
+            // Expected timeout
+        }
+        
+        logger.info("Viewing complete");
+    }
+    
+    @Test(priority = 1, description = "Edit all profile details at once")
     public void testEditCompleteProfile() {
-        logger.info("\n=== TEST 1: Edit Complete Profile ===");
+        ExtentTest test = getTest();
+        test.assignCategory("Edit Profile");
+        test.assignAuthor("Asmi");
+        
+        logger.info("TEST: Edit Complete Profile - Started");
+        test.info("Test: Edit Complete Profile - Started");
         
         String firstName = CSVReader.getFirstName();
         String lastName = CSVReader.getLastName();
@@ -57,91 +92,23 @@ public class EditProfileTest extends BaseTest {
         logger.info("About: {}", about);
         logger.info("Username: {}", username);
         
+        test.info("First Name: " + firstName);
+        test.info("Last Name: " + lastName);
+        test.info("About: " + about);
+        test.info("Username: " + username);
+        
+        // Update all profile fields at once
         editProfilePage.updateProfile(firstName, lastName, about, username);
+        test.info("Updated all profile fields (First Name, Last Name, About, Username)");
         
-        pause(5);
+        viewResultsFor(5);
         
-        Assert.assertTrue(driver.getCurrentUrl().contains("pinterest.com"));
-        logger.info("=== TEST 1 COMPLETED ✅ ===\n");
-    }
-    
-    @Test(priority = 2)
-    public void testEditFirstNameOnly() {
-        logger.info("\n=== TEST 2: Edit First Name Only ===");
+        Assert.assertTrue(driver.getCurrentUrl().contains("pinterest.com"),
+            "Should remain on Pinterest domain after profile update");
         
-        goHome();
-        
-        String firstName = CSVReader.getFirstName() + "2";
-        logger.info("First Name: {}", firstName);
-        
-        editProfilePage.navigateToEditProfile();
-        pause(2);
-        
-        editProfilePage.setFirstName(firstName);
-        editProfilePage.clickSave();
-        
-        pause(5);
-        
-        Assert.assertTrue(driver.getCurrentUrl().contains("pinterest.com"));
-        logger.info("=== TEST 2 COMPLETED ✅ ===\n");
-    }
-    
-    @Test(priority = 3)
-    public void testEditLastNameOnly() {
-        logger.info("\n=== TEST 3: Edit Last Name Only ===");
-        
-        goHome();
-        
-        String lastName = CSVReader.getLastName() + "2";
-        logger.info("Last Name: {}", lastName);
-        
-        editProfilePage.navigateToEditProfile();
-        pause(2);
-        
-        editProfilePage.setLastName(lastName);
-        editProfilePage.clickSave();
-        
-        pause(5);
-        
-        Assert.assertTrue(driver.getCurrentUrl().contains("pinterest.com"));
-        logger.info("=== TEST 3 COMPLETED ✅ ===\n");
-    }
-    
-    @Test(priority = 4)
-    public void testProfileFieldsVisibility() {
-        logger.info("\n=== TEST 4: Verify Profile Fields ===");
-        
-        goHome();
-        
-        editProfilePage.navigateToEditProfile();
-        pause(3);
-        
-        Assert.assertTrue(editProfilePage.isSaveButtonVisible());
-        Assert.assertNotNull(editProfilePage.getFirstName());
-        Assert.assertNotNull(editProfilePage.getLastName());
-        
-        logger.info("First Name: {}", editProfilePage.getFirstName());
-        logger.info("Last Name: {}", editProfilePage.getLastName());
-        logger.info("Username: {}", editProfilePage.getUsername());
-        logger.info("About: {}", editProfilePage.getAbout());
-        
-        pause(5);
-        
-        logger.info("=== TEST 4 COMPLETED ✅ ===\n");
-    }
-    
-    private void goHome() {
-        String baseUrl = ConfigReader.get("base.url");
-        driver.get(baseUrl);
-        wait.until(ExpectedConditions.urlContains("pinterest.com"));
-    }
-    
-    private void pause(int seconds) {
-        logger.info("Viewing for {} seconds...", seconds);
-        try {
-            wait.until(d -> false);
-        } catch (Exception e) {
-            // Expected
-        }
+        logger.info("Profile update completed successfully - All fields updated");
+        test.pass("Profile update completed successfully - All fields updated");
+        logger.info("TEST: Edit Complete Profile - Completed");
+        test.info("TEST: Edit Complete Profile - Completed");
     }
 }

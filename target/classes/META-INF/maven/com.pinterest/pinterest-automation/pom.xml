@@ -49,6 +49,13 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <scope>test</scope>
 </dependency>
 
+<dependency>
+    <groupId>commons-io</groupId>
+    <artifactId>commons-io</artifactId>
+    <version>2.15.1</version>
+</dependency>
+
+
 
 <!-- WebDriverManager -->
 <dependency>

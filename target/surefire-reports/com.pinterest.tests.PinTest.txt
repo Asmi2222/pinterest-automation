@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: com.pinterest.tests.SearchTest
+Test set: com.pinterest.tests.PinTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 70.259 s - in com.pinterest.tests.SearchTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 116.354 s - in com.pinterest.tests.PinTest

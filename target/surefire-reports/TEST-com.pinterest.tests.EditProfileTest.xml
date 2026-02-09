@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pinterest.tests.SearchTest" time="70.259" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.pinterest.tests.EditProfileTest" time="74.495" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,9 +18,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11\bin"/>
-    <property name="sun.java.command" value="C:\Users\I1002567\AppData\Local\Temp\surefire18085909154354157888\surefirebooter-20260209200137978_3.jar C:\Users\I1002567\AppData\Local\Temp\surefire18085909154354157888 2026-02-09T20-01-36_984-jvmRun1 surefire-20260209200137978_1tmp surefire_0-20260209200137978_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\I1002567\AppData\Local\Temp\surefire6506338052821340772\surefirebooter-20260209204623779_3.jar C:\Users\I1002567\AppData\Local\Temp\surefire6506338052821340772 2026-02-09T20-46-22_752-jvmRun1 surefire-20260209204623779_1tmp surefire_0-20260209204623779_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="SearchTest"/>
+    <property name="test" value="EditProfileTest"/>
     <property name="surefire.test.class.path" value="C:\Users\I1002567\Downloads\pinterest-automation\pinterest-automation\target\test-classes;C:\Users\I1002567\Downloads\pinterest-automation\pinterest-automation\target\classes;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-java\4.22.0\selenium-java-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-api\4.22.0\selenium-api-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-chrome-driver\4.22.0\selenium-chrome-driver-4.22.0.jar;C:\Users\I1002567\.m2\repository\com\google\auto\service\auto-service-annotations\1.1.1\auto-service-annotations-1.1.1.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-chromium-driver\4.22.0\selenium-chromium-driver-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-json\4.22.0\selenium-json-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-manager\4.22.0\selenium-manager-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v124\4.22.0\selenium-devtools-v124-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v125\4.22.0\selenium-devtools-v125-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v126\4.22.0\selenium-devtools-v126-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-devtools-v85\4.22.0\selenium-devtools-v85-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-edge-driver\4.22.0\selenium-edge-driver-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-firefox-driver\4.22.0\selenium-firefox-driver-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-http\4.22.0\selenium-http-4.22.0.jar;C:\Users\I1002567\.m2\repository\dev\failsafe\failsafe\3.3.2\failsafe-3.3.2.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-ie-driver\4.22.0\selenium-ie-driver-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-remote-driver\4.22.0\selenium-remote-driver-4.22.0.jar;C:\Users\I1002567\.m2\repository\com\google\guava\guava\33.2.1-jre\guava-33.2.1-jre.jar;C:\Users\I1002567\.m2\repository\com\google\guava\failureaccess\1.0.2\failureaccess-1.0.2.jar;C:\Users\I1002567\.m2\repository\com\google\guava\listenablefuture\9999.0-empty-to-avoid-conflict-with-guava\listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar;C:\Users\I1002567\.m2\repository\com\google\code\findbugs\jsr305\3.0.2\jsr305-3.0.2.jar;C:\Users\I1002567\.m2\repository\org\checkerframework\checker-qual\3.42.0\checker-qual-3.42.0.jar;C:\Users\I1002567\.m2\repository\com\google\errorprone\error_prone_annotations\2.26.1\error_prone_annotations-2.26.1.jar;C:\Users\I1002567\.m2\repository\com\google\j2objc\j2objc-annotations\3.0.0\j2objc-annotations-3.0.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\semconv\opentelemetry-semconv\1.25.0-alpha\opentelemetry-semconv-1.25.0-alpha.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-api\1.39.0\opentelemetry-api-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-context\1.39.0\opentelemetry-context-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-exporter-logging\1.39.0\opentelemetry-exporter-logging-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-sdk-common\1.39.0\opentelemetry-sdk-common-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure-spi\1.39.0\opentelemetry-sdk-extension-autoconfigure-spi-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-sdk-extension-autoconfigure\1.39.0\opentelemetry-sdk-extension-autoconfigure-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-api-incubator\1.39.0-alpha\opentelemetry-api-incubator-1.39.0-alpha.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-sdk-trace\1.39.0\opentelemetry-sdk-trace-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-sdk\1.39.0\opentelemetry-sdk-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-sdk-metrics\1.39.0\opentelemetry-sdk-metrics-1.39.0.jar;C:\Users\I1002567\.m2\repository\io\opentelemetry\opentelemetry-sdk-logs\1.39.0\opentelemetry-sdk-logs-1.39.0.jar;C:\Users\I1002567\.m2\repository\net\bytebuddy\byte-buddy\1.14.17\byte-buddy-1.14.17.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-os\4.22.0\selenium-os-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\apache\commons\commons-exec\1.4.0\commons-exec-1.4.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-safari-driver\4.22.0\selenium-safari-driver-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\seleniumhq\selenium\selenium-support\4.22.0\selenium-support-4.22.0.jar;C:\Users\I1002567\.m2\repository\org\apache\logging\log4j\log4j-core\2.20.0\log4j-core-2.20.0.jar;C:\Users\I1002567\.m2\repository\org\apache\logging\log4j\log4j-api\2.20.0\log4j-api-2.20.0.jar;C:\Users\I1002567\.m2\repository\com\aventstack\extentreports\5.1.2\extentreports-5.1.2.jar;C:\Users\I1002567\.m2\repository\io\reactivex\rxjava3\rxjava\3.1.6\rxjava-3.1.6.jar;C:\Users\I1002567\.m2\repository\org\reactivestreams\reactive-streams\1.0.4\reactive-streams-1.0.4.jar;C:\Users\I1002567\.m2\repository\org\freemarker\freemarker\2.3.32\freemarker-2.3.32.jar;C:\Users\I1002567\.m2\repository\org\projectlombok\lombok\1.18.26\lombok-1.18.26.jar;C:\Users\I1002567\.m2\repository\com\google\code\gson\gson\2.10.1\gson-2.10.1.jar;C:\Users\I1002567\.m2\repository\org\testng\testng\7.9.0\testng-7.9.0.jar;C:\Users\I1002567\.m2\repository\org\slf4j\slf4j-api\1.7.36\slf4j-api-1.7.36.jar;C:\Users\I1002567\.m2\repository\com\beust\jcommander\1.82\jcommander-1.82.jar;C:\Users\I1002567\.m2\repository\org\webjars\jquery\3.7.1\jquery-3.7.1.jar;C:\Users\I1002567\.m2\repository\commons-io\commons-io\2.15.1\commons-io-2.15.1.jar;C:\Users\I1002567\.m2\repository\io\github\bonigarcia\webdrivermanager\5.7.0\webdrivermanager-5.7.0.jar;C:\Users\I1002567\.m2\repository\com\github\docker-java\docker-java\3.3.5\docker-java-3.3.5.jar;C:\Users\I1002567\.m2\repository\com\github\docker-java\docker-java-core\3.3.5\docker-java-core-3.3.5.jar;C:\Users\I1002567\.m2\repository\com\github\docker-java\docker-java-api\3.3.5\docker-java-api-3.3.5.jar;C:\Users\I1002567\.m2\repository\org\bouncycastle\bcpkix-jdk18on\1.76\bcpkix-jdk18on-1.76.jar;C:\Users\I1002567\.m2\repository\org\bouncycastle\bcprov-jdk18on\1.76\bcprov-jdk18on-1.76.jar;C:\Users\I1002567\.m2\repository\org\bouncycastle\bcutil-jdk18on\1.76\bcutil-jdk18on-1.76.jar;C:\Users\I1002567\.m2\repository\org\slf4j\jcl-over-slf4j\1.7.30\jcl-over-slf4j-1.7.30.jar;C:\Users\I1002567\.m2\repository\com\github\docker-java\docker-java-transport-httpclient5\3.3.5\docker-java-transport-httpclient5-3.3.5.jar;C:\Users\I1002567\.m2\repository\com\github\docker-java\docker-java-transport\3.3.5\docker-java-transport-3.3.5.jar;C:\Users\I1002567\.m2\repository\net\java\dev\jna\jna\5.13.0\jna-5.13.0.jar;C:\Users\I1002567\.m2\repository\org\brotli\dec\0.1.2\dec-0.1.2.jar;C:\Users\I1002567\.m2\repository\org\apache\commons\commons-lang3\3.14.0\commons-lang3-3.14.0.jar;C:\Users\I1002567\.m2\repository\org\apache\commons\commons-compress\1.26.0\commons-compress-1.26.0.jar;C:\Users\I1002567\.m2\repository\org\apache\httpcomponents\client5\httpclient5\5.2.1\httpclient5-5.2.1.jar;C:\Users\I1002567\.m2\repository\org\apache\httpcomponents\core5\httpcore5\5.2\httpcore5-5.2.jar;C:\Users\I1002567\.m2\repository\org\apache\httpcomponents\core5\httpcore5-h2\5.2\httpcore5-h2-5.2.jar;C:\Users\I1002567\.m2\repository\com\fasterxml\jackson\core\jackson-databind\2.14.3\jackson-databind-2.14.3.jar;C:\Users\I1002567\.m2\repository\com\fasterxml\jackson\core\jackson-annotations\2.14.3\jackson-annotations-2.14.3.jar;C:\Users\I1002567\.m2\repository\com\fasterxml\jackson\core\jackson-core\2.14.3\jackson-core-2.14.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\I1002567"/>
@@ -35,7 +35,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\I1002567\AppData\Local\Temp\surefire18085909154354157888\surefirebooter-20260209200137978_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\I1002567\AppData\Local\Temp\surefire6506338052821340772\surefirebooter-20260209204623779_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.22+9-LTS-219"/>
@@ -63,78 +63,61 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="validSearchTest" classname="com.pinterest.tests.SearchTest" time="10.619">
-    <system-out><![CDATA[20:01:50.611 [main] INFO  com.pinterest.tests.SearchTest - Starting search tests setup
+  <testcase name="testEditCompleteProfile" classname="com.pinterest.tests.EditProfileTest" time="53.696">
+    <system-out><![CDATA[20:46:34.571 [main] INFO  com.pinterest.tests.EditProfileTest - Setting up Edit Profile Tests
 CSV Headers loaded: _key, email, password, validQuery, spellingError, specialCharacters, publicBoardName, secretBoardName, birthdate, adult, youngAdult, noAtSymbol, withSpaces, noDomain, firstName, lastName, about, username
 CSV file loaded successfully. Total rows: 19
-20:01:50.628 [main] INFO  com.pinterest.tests.SearchTest - Email: asmibajracharya9@gmail.com
-✅ Page loaded
-✅ Email field found
-✅ Email entered: asmibajracharya9@gmail.com
-✅ Password field found
-✅ Password entered
-✅ Submit button found
-✅ Clicked submit button
-20:02:03.233 [main] INFO  com.pinterest.tests.SearchTest - Login successful for search tests
-20:02:03.233 [main] INFO  com.pinterest.pages.SearchPage - SearchPage initialized
-20:02:03.233 [main] INFO  com.pinterest.tests.SearchTest - Search tests setup completed
-20:02:03.264 [main] INFO  com.pinterest.tests.SearchTest - TEST 1: Valid Search - Started
-20:02:03.268 [main] INFO  com.pinterest.tests.SearchTest - Valid search query: food recipes
-20:02:03.269 [main] INFO  com.pinterest.pages.SearchPage - Searching for: food recipes
-20:02:03.712 [main] INFO  com.pinterest.pages.SearchPage - Search executed successfully for query: food recipes
-20:02:03.729 [main] INFO  com.pinterest.tests.SearchTest - Search results page loaded successfully
-20:02:03.744 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:03.776 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:03.776 [main] INFO  com.pinterest.tests.SearchTest - Valid search successful - Found 18 pins
-20:02:03.776 [main] INFO  com.pinterest.tests.SearchTest - Viewing results for 10 seconds
-20:02:13.878 [main] INFO  com.pinterest.tests.SearchTest - Viewing complete
-20:02:13.878 [main] INFO  com.pinterest.tests.SearchTest - TEST 1: Valid Search - Completed
+20:46:34.588 [main] INFO  com.pinterest.tests.EditProfileTest - Email: asmibajracharya9@gmail.com
+20:46:35.540 [main] INFO  com.pinterest.pages.LoginPage - LoginPage initialized
+20:46:35.540 [main] INFO  com.pinterest.pages.LoginPage - Attempting login with email: asmibajracharya9@gmail.com
+20:46:36.329 [main] INFO  com.pinterest.pages.LoginPage - Email entered: asmibajracharya9@gmail.com
+20:46:36.603 [main] INFO  com.pinterest.pages.LoginPage - Clicked submit button
+20:46:44.106 [main] INFO  com.pinterest.tests.EditProfileTest - Login successful for Edit Profile tests
+20:46:44.106 [main] INFO  com.pinterest.pages.EditProfilePage - EditProfilePage initialized
+20:46:44.106 [main] INFO  com.pinterest.tests.EditProfileTest - Edit Profile tests setup completed
+20:46:44.142 [main] INFO  com.pinterest.tests.EditProfileTest - TEST: Edit Complete Profile - Started
+20:46:44.145 [main] INFO  com.pinterest.tests.EditProfileTest - First Name: Nickle
+20:46:44.145 [main] INFO  com.pinterest.tests.EditProfileTest - Last Name: Shrestha
+20:46:44.145 [main] INFO  com.pinterest.tests.EditProfileTest - About: singer
+20:46:44.145 [main] INFO  com.pinterest.tests.EditProfileTest - Username: nick727572123
+20:46:44.145 [main] INFO  com.pinterest.pages.EditProfilePage - Starting Edit Profile navigation
+20:46:44.145 [main] INFO  com.pinterest.pages.EditProfilePage - STEP 1: Looking for avatar on current page
+20:46:44.145 [main] INFO  com.pinterest.pages.EditProfilePage - Attempting to find and click avatar
+20:46:44.680 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully clicked Avatar locator 1 using regular click
+20:46:44.680 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully clicked avatar using Avatar locator 1
+20:46:46.254 [main] INFO  com.pinterest.pages.EditProfilePage - STEP 2: Clicking user profile name
+20:46:46.254 [main] INFO  com.pinterest.pages.EditProfilePage - Attempting to find and click profile name
+20:47:06.795 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully clicked Profile name locator 3 using regular click
+20:47:06.795 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully clicked profile name using Profile name locator 3
+20:47:08.402 [main] INFO  com.pinterest.pages.EditProfilePage - STEP 3: Clicking edit profile/settings link
+20:47:08.402 [main] INFO  com.pinterest.pages.EditProfilePage - Attempting to find and click edit profile link
+20:47:18.885 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully clicked Edit profile locator 2 using regular click
+20:47:18.885 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully clicked edit profile link using Edit profile locator 2
+20:47:25.855 [main] INFO  com.pinterest.pages.EditProfilePage - Edit Profile page loaded successfully
+20:47:25.855 [main] INFO  com.pinterest.pages.EditProfilePage - Clearing and typing in First Name: Nickle
+20:47:26.803 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully cleared and updated First Name
+20:47:26.803 [main] INFO  com.pinterest.pages.EditProfilePage - Clearing and typing in Last Name: Shrestha
+20:47:27.724 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully cleared and updated Last Name
+20:47:27.724 [main] INFO  com.pinterest.pages.EditProfilePage - Clearing and typing in About: singer
+20:47:28.661 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully cleared and updated About
+20:47:29.004 [main] INFO  com.pinterest.pages.EditProfilePage - Clearing and typing in Username: nick727572123
+20:47:29.942 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully cleared and updated Username
+20:47:29.942 [main] INFO  com.pinterest.pages.EditProfilePage - Clicking Save button
+20:47:30.271 [main] INFO  com.pinterest.pages.EditProfilePage - Clicking Save Button
+20:47:30.689 [main] INFO  com.pinterest.pages.EditProfilePage - Successfully clicked Save Button
+20:47:32.770 [main] INFO  com.pinterest.pages.EditProfilePage - Save completed
+20:47:32.770 [main] INFO  com.pinterest.tests.EditProfileTest - Viewing results for 5 seconds
+20:47:37.820 [main] INFO  com.pinterest.tests.EditProfileTest - Viewing complete
+20:47:37.821 [main] INFO  com.pinterest.tests.EditProfileTest - Profile update completed successfully - All fields updated
+20:47:37.821 [main] INFO  com.pinterest.tests.EditProfileTest - TEST: Edit Complete Profile - Completed
 ]]></system-out>
     <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-Feb 09, 2026 8:01:41 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Feb 09, 2026 8:46:27 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 144
-Feb 09, 2026 8:01:41 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+Feb 09, 2026 8:46:27 PM org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
 WARNING: Unable to find version of CDP to use for 144.0.7559.133. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.22.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
-  </testcase>
-  <testcase name="spellingErrorSearchTest" classname="com.pinterest.tests.SearchTest" time="18.795">
-    <system-out><![CDATA[20:02:14.168 [main] INFO  com.pinterest.tests.SearchTest - TEST 2: Spelling Error Search - Started
-20:02:14.168 [main] INFO  com.pinterest.pages.SearchPage - Navigating to home page: https://www.pinterest.com
-20:02:22.348 [main] INFO  com.pinterest.pages.SearchPage - Successfully navigated to home page
-20:02:22.348 [main] INFO  com.pinterest.tests.SearchTest - Spelling error query: food recyups
-20:02:22.348 [main] INFO  com.pinterest.pages.SearchPage - Searching for: food recyups
-20:02:22.743 [main] INFO  com.pinterest.pages.SearchPage - Search executed successfully for query: food recyups
-20:02:22.760 [main] INFO  com.pinterest.tests.SearchTest - Search results page loaded for spelling error query
-20:02:22.776 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:22.792 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:22.809 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:22.810 [main] INFO  com.pinterest.tests.SearchTest - Pinterest showed results despite spelling error - Found 18 pins
-20:02:22.810 [main] INFO  com.pinterest.tests.SearchTest - Viewing results for 10 seconds
-20:02:32.959 [main] INFO  com.pinterest.tests.SearchTest - Viewing complete
-20:02:32.960 [main] INFO  com.pinterest.tests.SearchTest - TEST 2: Spelling Error Search - Completed
-]]></system-out>
-  </testcase>
-  <testcase name="specialCharactersSearchTest" classname="com.pinterest.tests.SearchTest" time="14.951">
-    <system-out><![CDATA[20:02:32.997 [main] INFO  com.pinterest.tests.SearchTest - TEST 3: Special Characters Search - Started
-20:02:32.997 [main] INFO  com.pinterest.pages.SearchPage - Navigating to home page: https://www.pinterest.com
-20:02:36.017 [main] INFO  com.pinterest.pages.SearchPage - Successfully navigated to home page
-20:02:36.017 [main] INFO  com.pinterest.tests.SearchTest - Special characters query: $%^!@#@$#%#@#@$
-20:02:36.017 [main] INFO  com.pinterest.pages.SearchPage - Searching for: $%^!@#@$#%#@#@$
-20:02:37.793 [main] INFO  com.pinterest.pages.SearchPage - Search executed successfully for query: $%^!@#@$#%#@#@$
-20:02:37.793 [main] INFO  com.pinterest.tests.SearchTest - Special characters search was attempted
-20:02:37.810 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:37.826 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:37.843 [main] INFO  com.pinterest.pages.SearchPage - Found 18 pins on the page
-20:02:37.843 [main] INFO  com.pinterest.tests.SearchTest - Pinterest filtered special characters and showed 18 pins
-20:02:37.843 [main] INFO  com.pinterest.tests.SearchTest - Viewing results for 10 seconds
-20:02:47.943 [main] INFO  com.pinterest.tests.SearchTest - Viewing complete
-20:02:47.944 [main] INFO  com.pinterest.tests.SearchTest - TEST 3: Special Characters Search - Completed
-]]></system-out>
-  </testcase>
-  <testcase name="searchTestsSummary" classname="com.pinterest.tests.SearchTest" time="0.002">
-    <system-out><![CDATA[20:02:47.978 [main] INFO  com.pinterest.tests.SearchTest - All search tests completed successfully
-]]></system-out>
   </testcase>
 </testsuite>

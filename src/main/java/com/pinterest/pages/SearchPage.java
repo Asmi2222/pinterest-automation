@@ -9,11 +9,16 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchPage {
+    
+    private static final Logger logger = LogManager.getLogger(SearchPage.class);
     
     private WebDriver driver;
     private WebDriverWait wait;
@@ -30,6 +35,7 @@ public class SearchPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS));
         PageFactory.initElements(driver, this);
+        logger.info("SearchPage initialized");
     }
     
     /**
@@ -37,26 +43,31 @@ public class SearchPage {
      */
     public WebElement getSearchBox() {
         int attempts = 0;
+        logger.debug("Attempting to locate search box");
         
         while (attempts < MAX_RETRY_ATTEMPTS) {
             try {
                 WebElement searchBox = wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
                 wait.until(ExpectedConditions.elementToBeClickable(searchBox));
+                logger.debug("Search box located successfully");
                 return searchBox;
                 
             } catch (StaleElementReferenceException e) {
                 attempts++;
-                System.out.println("Stale element for search box. Retry attempt: " + attempts);
+                logger.warn("Stale element for search box. Retry attempt: {}", attempts);
                 
                 if (attempts >= MAX_RETRY_ATTEMPTS) {
+                    logger.error("Failed to find search box after {} attempts", MAX_RETRY_ATTEMPTS);
                     throw new RuntimeException("Failed to find search box after " + MAX_RETRY_ATTEMPTS + " attempts", e);
                 }
                 
             } catch (TimeoutException e) {
+                logger.error("Search box not found within timeout period");
                 throw new RuntimeException("Search box not found within timeout period", e);
             }
         }
         
+        logger.error("Failed to get search box");
         throw new RuntimeException("Failed to get search box");
     }
     
@@ -64,23 +75,26 @@ public class SearchPage {
      * Perform search with a query
      */
     public void search(String query) {
-        System.out.println("🔍 Searching for: " + query);
+        logger.info("Searching for: {}", query);
         
         WebElement searchBox = getSearchBox();
         
         // Clear existing text
         searchBox.clear();
+        logger.debug("Cleared search box");
         
         // Enter search query
         searchBox.sendKeys(query);
+        logger.debug("Entered search query: {}", query);
         
         // Press Enter to search
         searchBox.sendKeys(Keys.RETURN);
+        logger.debug("Pressed Enter to submit search");
         
         // Wait for search results page to load
         waitForSearchResultsPage();
         
-        System.out.println("✅ Search executed successfully");
+        logger.info("Search executed successfully for query: {}", query);
     }
     
     /**
@@ -89,9 +103,9 @@ public class SearchPage {
     private void waitForSearchResultsPage() {
         try {
             wait.until(ExpectedConditions.urlContains("search"));
-            System.out.println("✓ Search results page loaded");
+            logger.debug("Search results page loaded - URL contains 'search'");
         } catch (TimeoutException e) {
-            System.err.println("⚠️  Warning: URL does not contain 'search'");
+            logger.warn("URL does not contain 'search' after timeout");
         }
     }
     
@@ -109,24 +123,25 @@ public class SearchPage {
                 // Get all pins
                 List<WebElement> pins = driver.findElements(pinsLocator);
                 
-                System.out.println("📌 Found " + pins.size() + " pins");
+                logger.info("Found {} pins on the page", pins.size());
                 return pins;
                 
             } catch (StaleElementReferenceException e) {
                 attempts++;
-                System.out.println("Stale element when getting pins. Retry attempt: " + attempts);
+                logger.warn("Stale element when getting pins. Retry attempt: {}", attempts);
                 
                 if (attempts >= MAX_RETRY_ATTEMPTS) {
-                    System.err.println("⚠️  Failed to get pins after " + MAX_RETRY_ATTEMPTS + " attempts. Returning empty list.");
+                    logger.error("Failed to get pins after {} attempts. Returning empty list.", MAX_RETRY_ATTEMPTS);
                     return new ArrayList<>();
                 }
                 
             } catch (TimeoutException e) {
-                System.out.println("⚠️  No pins found on the page");
+                logger.warn("No pins found on the page - timeout occurred");
                 return new ArrayList<>();
             }
         }
         
+        logger.warn("Returning empty pin list after retry attempts");
         return new ArrayList<>();
     }
     
@@ -134,20 +149,25 @@ public class SearchPage {
      * Get pins count
      */
     public int getPinsCount() {
-        return getPins().size();
+        int count = getPins().size();
+        logger.debug("Pins count: {}", count);
+        return count;
     }
     
     /**
      * Check if pins are displayed
      */
     public boolean arePinsDisplayed() {
-        return getPinsCount() > 0;
+        boolean displayed = getPinsCount() > 0;
+        logger.debug("Pins displayed: {}", displayed);
+        return displayed;
     }
     
     /**
      * Open a pin by index
      */
     public void openPin(int index) {
+        logger.info("Attempting to open pin at index: {}", index);
         List<WebElement> pins = getPins();
         
         if (pins.size() > index) {
@@ -155,11 +175,13 @@ public class SearchPage {
                 WebElement pin = pins.get(index);
                 wait.until(ExpectedConditions.elementToBeClickable(pin));
                 pin.click();
-                System.out.println("✅ Opened pin at index: " + index);
+                logger.info("Successfully opened pin at index: {}", index);
             } catch (Exception e) {
+                logger.error("Failed to open pin at index: {}", index, e);
                 throw new RuntimeException("Failed to open pin at index " + index, e);
             }
         } else {
+            logger.error("Pin index {} out of bounds. Total pins: {}", index, pins.size());
             throw new RuntimeException("Pin index " + index + " out of bounds. Total pins: " + pins.size());
         }
     }
@@ -170,8 +192,11 @@ public class SearchPage {
     public boolean isNoResultsMessageDisplayed() {
         try {
             WebElement noResultsMsg = wait.until(ExpectedConditions.presenceOfElementLocated(noResultsLocator));
-            return noResultsMsg.isDisplayed();
+            boolean displayed = noResultsMsg.isDisplayed();
+            logger.debug("No results message displayed: {}", displayed);
+            return displayed;
         } catch (TimeoutException e) {
+            logger.debug("No results message not displayed");
             return false;
         }
     }
@@ -182,8 +207,11 @@ public class SearchPage {
     public boolean isSpellingCorrectionDisplayed() {
         try {
             WebElement correctionMsg = wait.until(ExpectedConditions.presenceOfElementLocated(spellingCorrectionLocator));
-            return correctionMsg.isDisplayed();
+            boolean displayed = correctionMsg.isDisplayed();
+            logger.debug("Spelling correction displayed: {}", displayed);
+            return displayed;
         } catch (TimeoutException e) {
+            logger.debug("Spelling correction not displayed");
             return false;
         }
     }
@@ -193,34 +221,41 @@ public class SearchPage {
      */
     public boolean isSearchAttempted(String baseUrl) {
         String currentUrl = driver.getCurrentUrl();
-        return currentUrl.contains("search") || !currentUrl.equals(baseUrl);
+        boolean attempted = currentUrl.contains("search") || !currentUrl.equals(baseUrl);
+        logger.debug("Search attempted: {} (Current URL: {})", attempted, currentUrl);
+        return attempted;
     }
     
     /**
      * Check if search results page loaded successfully
      */
     public boolean isSearchResultsPageLoaded() {
-        return driver.getCurrentUrl().contains("search");
+        boolean loaded = driver.getCurrentUrl().contains("search");
+        logger.debug("Search results page loaded: {}", loaded);
+        return loaded;
     }
     
     /**
      * Navigate back to home page
      */
     public void navigateToHome(String baseUrl) {
+        logger.info("Navigating to home page: {}", baseUrl);
         driver.get(baseUrl);
         
         // Wait for home page to load
         wait.until(ExpectedConditions.presenceOfElementLocated(searchBoxLocator));
         
-        System.out.println("✅ Navigated to home page");
+        logger.info("Successfully navigated to home page");
     }
     
     /**
      * Clear search box
      */
     public void clearSearch() {
+        logger.debug("Clearing search box");
         WebElement searchBox = getSearchBox();
         searchBox.clear();
+        logger.debug("Search box cleared");
     }
     
     /**
@@ -228,8 +263,10 @@ public class SearchPage {
      * (either showing results, suggestions, or no results message)
      */
     public boolean isSearchHandledGracefully() {
-        return arePinsDisplayed() || 
-               isSpellingCorrectionDisplayed() || 
-               isNoResultsMessageDisplayed();
+        boolean handled = arePinsDisplayed() || 
+                         isSpellingCorrectionDisplayed() || 
+                         isNoResultsMessageDisplayed();
+        logger.debug("Search handled gracefully: {}", handled);
+        return handled;
     }
 }

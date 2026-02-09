@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
 import java.time.Duration;
 
 public class SignupPage {
@@ -271,11 +272,15 @@ public class SignupPage {
     }
     
     private void pause(int ms) {
+        FluentWait<Boolean> fluentWait = new FluentWait<>(true)
+            .withTimeout(Duration.ofMillis(ms))
+            .pollingEvery(Duration.ofMillis(100))
+            .ignoring(org.openqa.selenium.NoSuchElementException.class);
+        
         try {
-            Thread.sleep(ms);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            logger.warn("Pause interrupted");
+            fluentWait.until(result -> false);
+        } catch (Exception e) {
+            // Expected timeout
         }
     }
 }

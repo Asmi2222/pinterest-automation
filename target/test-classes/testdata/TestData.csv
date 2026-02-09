@@ -1,8 +1,8 @@
 _key,email,password,validQuery,spellingError,specialCharacters,publicBoardName,secretBoardName,birthdate,adult,youngAdult,noAtSymbol,withSpaces,noDomain,firstName,lastName,about,username
-validUser,nikalgurung7@gmail.com,VeriskTest1,,,,,,,,,,,,,,,
+validUser,asmibajracharya9@gmail.com,VeriskTest123,,,,,,,,,,,,,,,
 invalidUser,wrong@mail.com,Wrong123,,,,,,,,,,,,,,,
 wrongEmailUser,wrongemail@example.com,Arsenic123@,,,,,,,,,,,,,,,
-wrongPasswordUser,nikalgurung7@gmail.com,WrongPassword123!,,,,,,,,,,,,,,,
+wrongPasswordUser,asmibajracharya9@gmail.com,WrongPassword123!,,,,,,,,,,,,,,,
 invalidEmailFormat,invalidemail,SomePassword123,,,,,,,,,,,,,,,
 search,,,food recipes,food recyups,$%^!@#@$#%#@#@$,,,,,,,,,,,,
 board,,,,,,Holiday Collections,Travel Plans,,,,,,,,,,

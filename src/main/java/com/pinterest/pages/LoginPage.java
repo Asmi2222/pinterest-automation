@@ -9,9 +9,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.time.Duration;
 
 public class LoginPage {
+    
+    private static final Logger logger = LogManager.getLogger(LoginPage.class);
     
     private WebDriver driver;
     private WebDriverWait wait;
@@ -37,7 +42,6 @@ public class LoginPage {
         By.xpath("//button[contains(text(), 'Continue')]")
     };
     
-    // FIXED: Use the correct XPath for login button as first priority
     private By[] loginButtonLocators = {
         By.xpath("//*[@id='__PWS_ROOT__']/div[1]/header/div[1]/nav/div[2]/div[2]/button"),
         By.xpath("//button[contains(text(), 'Log in')]"),
@@ -70,12 +74,14 @@ public class LoginPage {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT_SECONDS));
         PageFactory.initElements(driver, this);
+        logger.info("LoginPage initialized");
     }
     
     /**
      * Open login page
      */
     public void open(String url) {
+        logger.info("Opening URL: {}", url);
         driver.get(url);
         waitForPageLoad();
     }
@@ -87,24 +93,26 @@ public class LoginPage {
         wait.until(driver -> 
             ((org.openqa.selenium.JavascriptExecutor) driver)
                 .executeScript("return document.readyState").equals("complete"));
-        System.out.println("✅ Page loaded");
+        logger.debug("Page loaded successfully");
     }
     
     /**
      * Find element with multiple locator strategies
      */
     private WebElement findElementWithRetry(By[] locators, String elementName) {
+        logger.debug("Searching for element: {}", elementName);
+        
         for (By locator : locators) {
             try {
                 WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-                System.out.println("✅ " + elementName + " found");
+                logger.debug("{} found using locator: {}", elementName, locator);
                 return element;
             } catch (TimeoutException e) {
-                // Try next locator
+                logger.debug("Locator failed: {}, trying next", locator);
             }
         }
         
-        System.out.println("⚠️  " + elementName + " not found");
+        logger.warn("{} not found with any locator", elementName);
         return null;
     }
     
@@ -112,51 +120,53 @@ public class LoginPage {
      * Click login button (if present on homepage)
      */
     public void clickLoginButton() {
+        logger.info("Attempting to click login button");
+        
         for (By locator : loginButtonLocators) {
             try {
                 WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(locator));
                 
-                // Verify it's actually the login button
                 String buttonText = loginBtn.getText().toLowerCase();
-                System.out.println("🔍 Found button with text: '" + buttonText + "'");
+                logger.debug("Found button with text: '{}'", buttonText);
                 
-                // Only click if it's clearly a login button or if text is empty (icon button)
                 if (buttonText.contains("log in") || buttonText.contains("login") || buttonText.isEmpty()) {
                     loginBtn.click();
-                    System.out.println("✅ Clicked login button");
+                    logger.info("Clicked login button successfully");
                     
-                    // Wait for login form to load
                     waitForPageLoad();
                     
-                    // Wait a bit for modal/form to appear
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                    }
+                    // Wait for modal/form to appear using WebDriverWait
+                    wait.until(ExpectedConditions.or(
+                        ExpectedConditions.presenceOfElementLocated(emailInputLocators[0]),
+                        ExpectedConditions.presenceOfElementLocated(emailInputLocators[1]),
+                        ExpectedConditions.presenceOfElementLocated(emailInputLocators[2])
+                    ));
+                    
                     return;
                 } else {
-                    System.out.println("⚠️  Button text doesn't match login, trying next locator");
+                    logger.debug("Button text doesn't match login, trying next locator");
                 }
             } catch (TimeoutException e) {
-                // Try next locator
+                logger.debug("Login button locator timeout, trying next");
             }
         }
         
-        System.out.println("ℹ️  Login button not found (might already be on login page)");
+        logger.info("Login button not found (might already be on login page)");
     }
     
     /**
      * Login with credentials
      */
     public void login(String email, String password) {
+        logger.info("Attempting login with email: {}", email);
+        
         // Fill email
         if (!email.isEmpty()) {
             WebElement emailField = findElementWithRetry(emailInputLocators, "Email field");
             if (emailField != null) {
                 emailField.clear();
                 emailField.sendKeys(email);
-                System.out.println("✅ Email entered: " + email);
+                logger.info("Email entered: {}", email);
             }
         }
         
@@ -166,7 +176,7 @@ public class LoginPage {
             if (passwordField != null) {
                 passwordField.clear();
                 passwordField.sendKeys(password);
-                System.out.println("✅ Password entered");
+                logger.debug("Password entered");
             }
         }
         
@@ -178,23 +188,23 @@ public class LoginPage {
      * Click submit/login button
      */
     private void clickSubmitButton() {
+        logger.debug("Attempting to click submit button");
         WebElement submitBtn = findElementWithRetry(submitButtonLocators, "Submit button");
         
         if (submitBtn != null) {
             try {
                 wait.until(ExpectedConditions.elementToBeClickable(submitBtn));
                 submitBtn.click();
-                System.out.println("✅ Clicked submit button");
+                logger.info("Clicked submit button");
                 
-                // Wait for response
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
+                // Wait for response using WebDriverWait
+                wait.until(ExpectedConditions.or(
+                    ExpectedConditions.urlContains("pinterest.com"),
+                    ExpectedConditions.presenceOfElementLocated(errorMessageLocators[0])
+                ));
                 
             } catch (Exception e) {
-                System.err.println("⚠️  Failed to click submit button");
+                logger.error("Failed to click submit button: {}", e.getMessage());
             }
         }
     }
@@ -203,6 +213,8 @@ public class LoginPage {
      * Login with Enter key
      */
     public void loginWithEnter(String email, String password) {
+        logger.info("Login with Enter key - Email: {}", email);
+        
         if (!email.isEmpty()) {
             WebElement emailField = findElementWithRetry(emailInputLocators, "Email field");
             if (emailField != null) {
@@ -217,7 +229,7 @@ public class LoginPage {
                 passwordField.clear();
                 passwordField.sendKeys(password);
                 passwordField.sendKeys(Keys.RETURN);
-                System.out.println("✅ Pressed Enter to submit");
+                logger.info("Pressed Enter to submit");
             }
         }
     }
@@ -233,11 +245,13 @@ public class LoginPage {
      * Check if error message is displayed
      */
     public boolean isErrorMessageDisplayed() {
+        logger.debug("Checking for error messages");
+        
         for (By locator : errorMessageLocators) {
             try {
                 WebElement errorMsg = driver.findElement(locator);
                 if (errorMsg.isDisplayed()) {
-                    System.out.println("✅ Error message found: " + errorMsg.getText());
+                    logger.info("Error message found: {}", errorMsg.getText());
                     return true;
                 }
             } catch (Exception e) {
@@ -245,7 +259,7 @@ public class LoginPage {
             }
         }
         
-        System.out.println("ℹ️  No error message displayed");
+        logger.debug("No error message displayed");
         return false;
     }
     
@@ -253,16 +267,22 @@ public class LoginPage {
      * Get error message text
      */
     public String getErrorMessage() {
+        logger.debug("Retrieving error message text");
+        
         for (By locator : errorMessageLocators) {
             try {
                 WebElement errorMsg = driver.findElement(locator);
                 if (errorMsg.isDisplayed()) {
-                    return errorMsg.getText();
+                    String text = errorMsg.getText();
+                    logger.info("Error message text: {}", text);
+                    return text;
                 }
             } catch (Exception e) {
                 // Try next locator
             }
         }
+        
+        logger.debug("No error message text found");
         return "";
     }
     
@@ -271,13 +291,12 @@ public class LoginPage {
      */
     public boolean isOnLoginPage() {
         String currentUrl = driver.getCurrentUrl();
-        boolean onLoginPage = currentUrl.contains("/login") || 
-                              isEmailFieldDisplayed();
+        boolean onLoginPage = currentUrl.contains("/login") || isEmailFieldDisplayed();
         
         if (onLoginPage) {
-            System.out.println("ℹ️  Still on login page");
+            logger.debug("Still on login page");
         } else {
-            System.out.println("✅ Left login page - URL: " + currentUrl);
+            logger.info("Left login page - Current URL: {}", currentUrl);
         }
         
         return onLoginPage;
@@ -291,12 +310,15 @@ public class LoginPage {
             try {
                 WebElement element = driver.findElement(locator);
                 if (element.isDisplayed()) {
+                    logger.debug("Email field is displayed");
                     return true;
                 }
             } catch (Exception e) {
                 // Try next locator
             }
         }
+        
+        logger.debug("Email field not displayed");
         return false;
     }
     
@@ -308,12 +330,15 @@ public class LoginPage {
             try {
                 WebElement element = driver.findElement(locator);
                 if (element.isDisplayed()) {
+                    logger.debug("Password field is displayed");
                     return true;
                 }
             } catch (Exception e) {
                 // Try next locator
             }
         }
+        
+        logger.debug("Password field not displayed");
         return false;
     }
     
@@ -322,6 +347,8 @@ public class LoginPage {
      */
     public boolean pageContainsText(String text) {
         String pageSource = driver.getPageSource().toLowerCase();
-        return pageSource.contains(text.toLowerCase());
+        boolean contains = pageSource.contains(text.toLowerCase());
+        logger.debug("Page contains text '{}': {}", text, contains);
+        return contains;
     }
 }

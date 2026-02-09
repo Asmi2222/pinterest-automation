@@ -3,17 +3,20 @@
 <suite name="Failed suite [Surefire suite]" verbose="0">
   <test thread-count="5" name="Surefire test(failed)" verbose="0">
     <classes>
-      <class name="com.pinterest.tests.SignupTest">
+      <class name="com.pinterest.tests.EditProfileTest">
         <methods>
           <include name="logStatusAndAttachArtifacts"/>
           <include name="setupReport"/>
+          <include name="testProfileFieldsVisibility"/>
           <include name="tearDown"/>
-          <include name="signupWithUnderage"/>
           <include name="setUp"/>
-          <include name="setupTest"/>
+          <include name="setup"/>
+          <include name="testEditCompleteProfile"/>
+          <include name="testEditLastNameOnly"/>
+          <include name="testEditFirstNameOnly"/>
           <include name="startTest"/>
         </methods>
-      </class> <!-- com.pinterest.tests.SignupTest -->
+      </class> <!-- com.pinterest.tests.EditProfileTest -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->
