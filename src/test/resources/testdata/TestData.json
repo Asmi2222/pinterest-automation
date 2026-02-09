@@ -1,0 +1,91 @@
+{
+  "validUser": {
+    "email": "zuhznashres@gmail.com",
+    "password": "zuhanaSHRES"
+  },
+  "invalidUser": {
+    "email": "wrong@mail.com",
+    "password": "Wrong123"
+  },
+  "wrongEmailUser": {
+    "email": "wrongemail@example.com",
+    "password": "Arsenic123@"
+  },
+  "wrongPasswordUser": {
+    "email": "asmibajracharya@gmail.com",
+    "password": "WrongPassword123!"
+  },
+  "invalidEmailFormat": {
+    "email": "invalidemail",
+    "password": "SomePassword123"
+  },
+  "search": {
+    "validQuery": "food recipes",
+    "spellingError": "food recyups",
+    "specialCharacters": "$%^!@#@$#%#@#@$"
+  },
+  "board": {
+    "publicBoardName": "Holiday Collections",
+    "secretBoardName": "Travel Plans"
+  },
+  "newSignupUser": {
+    "email": "ht5526108@gmail.com",
+    "password": "TestPassword123@",
+    "birthdate": "09/15/1995"
+  },
+  "newSignupUser2": {
+    "email": "james.rodriguez85@gmail.com",
+    "password": "TestPassword123@",
+    "birthdate": "05/20/1990"
+  },
+  "newSignupUser3": {
+    "email": "emily.chen.design@gmail.com",
+    "password": "TestPassword123@",
+    "birthdate": "03/15/2000"
+  },
+  "existingEmailUser": {
+    "email": "asmibajracharya9@gmail.com",
+    "password": "NewPassword123@",
+    "birthdate": "01/15/1995"
+  },
+  "weakPasswordUser": {
+    "email": "michaelthompson92@gmail.com",
+    "password": "123",
+    "birthdate": "01/15/1995"
+  },
+  "shortPasswordUser": {
+    "email": "jessicaparkerdev@gmail.com",
+    "password": "Pass1@",
+    "birthdate": "01/15/1995"
+  },
+  "underageUser": {
+    "email": "alexjohnson2010@gmail.com",
+    "password": "TestPassword123@",
+    "birthdate": "12/31/2010"
+  },
+  "futureDateUser": {
+    "email": "davidwilliamstest@gmail.com",
+    "password": "TestPassword123@",
+    "birthdate": "12/31/2026"
+  },
+  "specialCharPasswordUser": {
+    "email": "Shreesma123@gmail.com",
+    "password": "P@ssw0rd!#$%^&*()",
+    "birthdate": "01/15/1995"
+  },
+  "validBirthdate": {
+    "adult": "05/20/1990",
+    "youngAdult": "03/15/2000"
+  },
+  "invalidEmail": {
+    "noAtSymbol": "invalidemail",
+    "withSpaces": "test user@example.com",
+    "noDomain": "test@"
+  },
+  "profileUpdate": {
+      "firstName": "kazuha",
+      "lastName": "Shrestha",
+      "about": "singer",
+      "username": "zuha2000912"
+    }
+}

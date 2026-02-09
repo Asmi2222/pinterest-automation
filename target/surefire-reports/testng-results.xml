@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2026-02-09T15:46:32 NPT" name="Surefire suite" finished-at="2026-02-09T15:46:47 NPT" duration-ms="14560">
+    <groups>
+    </groups>
+    <test started-at="2026-02-09T15:46:32 NPT" name="Surefire test" finished-at="2026-02-09T15:46:47 NPT" duration-ms="14560">
+      <class name="com.pinterest.tests.LogoutTest">
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.pinterest.tests.LogoutTest@27953a83]" started-at="2026-02-09T15:46:32 NPT" name="setUp" finished-at="2026-02-09T15:46:39 NPT" duration-ms="7209" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="validLogout()[pri:1, instance:com.pinterest.tests.LogoutTest@27953a83]" started-at="2026-02-09T15:46:39 NPT" name="validLogout" description="Verify user can successfully logout from Pinterest" finished-at="2026-02-09T15:46:46 NPT" duration-ms="6875" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- validLogout -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.pinterest.tests.LogoutTest@27953a83]" started-at="2026-02-09T15:46:46 NPT" name="tearDown" finished-at="2026-02-09T15:46:47 NPT" duration-ms="445" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.pinterest.tests.LogoutTest -->
+    </test> <!-- Surefire test -->
+  </suite> <!-- Surefire suite -->
+</testng-results>

@@ -1,0 +1,8 @@
+com\pinterest\tests\PinTest.class
+com\pinterest\base\BaseTest.class
+com\pinterest\tests\SearchTest.class
+com\pinterest\tests\LogoutTest.class
+com\pinterest\tests\SignupTest.class
+com\pinterest\tests\EditProfileTest.class
+com\pinterest\tests\HomeTest.class
+com\pinterest\tests\LoginTest.class

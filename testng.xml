@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="TestSuite">
+    <test name="Pinterest Tests">
+        <classes>
+            <class name="com.pinterest.tests.LoginTest"/> 
+            <class name="com.pinterest.tests.HomeTest"/> 
+            <class name="com.pinterest.tests.PinTest"/> 
+            <class name="com.pinterest.tests.SearchTest"/> 
+            <class name="com.pinterest.tests.SignupTest"/> 
+            <class name="com.pinterest.tests.LogoutTest"/>
+            <class name="com.pinterest.tests.EditProfileTest"/>
+        </classes>
+    </test>
+</suite>
